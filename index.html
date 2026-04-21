@@ -9,575 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-serif: 'Fraunces', 'Georgia', serif;
-      --navy-darkest: #051A33;
-      --navy-dark: #0C3260;
-      --navy: #185FA5;
-      --blue: #378ADD;
-      --blue-light: #7BB8F0;
-      --blue-pale: #E6F1FB;
-      --surface: #F4F7FB;
-      --border: #D8E4EF;
-      --text-primary: #0C3260;
-      --text-secondary: #5a6875;
-      --text-muted: #7b8794;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-sans);
-      color: var(--text-primary);
-      background: #fff;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-
-    /* TOP CONTACT BAR */
-    .topbar {
-      background: var(--navy-darkest);
-      padding: 10px 2rem;
-      font-size: 12px;
-      color: rgba(255,255,255,0.85);
-    }
-    .topbar-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .topbar-item { display: flex; align-items: center; gap: 7px; }
-    .topbar-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: 0.7; }
-    .topbar-phone { color: var(--blue-light); font-weight: 500; letter-spacing: 0.3px; text-decoration: none; }
-    .topbar-phone:hover { color: #fff; }
-
-    /* NAV */
-    .nav {
-      background: var(--navy-dark);
-      padding: 0 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 62px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 15px; font-weight: 500; letter-spacing: 0.3px; white-space: nowrap; }
-    .logo-mark {
-      width: 28px; height: 28px;
-      background: var(--blue);
-      border-radius: 7px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .nav-logo span { color: var(--blue-light); font-size: inherit; font-weight: inherit; letter-spacing: inherit; }
-    .nav-links { display: flex; gap: 1.75rem; }
-    .nav-links a { color: rgba(255,255,255,0.75); font-size: 12px; text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta {
-      background: transparent;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.3);
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      font-family: inherit;
-      transition: all 0.2s;
-    }
-    .nav-cta:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
-
-    /* HERO */
-    .hero {
-      padding: 4.5rem 2rem 4rem;
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .hero-wrap { background: var(--navy-dark); position: relative; overflow: hidden; }
-    .hero-wrap::before {
-      content: '';
-      position: absolute;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(55,138,221,0.18) 0%, transparent 70%);
-      top: -300px; right: -250px;
-      pointer-events: none;
-    }
-    .hero-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(123,184,240,0.3), transparent);
-    }
-    .hero-content { position: relative; z-index: 2; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11px; color: var(--blue-light);
-      letter-spacing: 1.8px; margin-bottom: 1.25rem; font-weight: 500;
-    }
-    .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--blue); }
-    .hero h1 {
-      color: #fff;
-      font-size: 42px;
-      font-weight: 500;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--blue-light);
-      font-family: var(--font-serif);
-      font-weight: 400;
-    }
-    .hero-sub { color: rgba(255,255,255,0.68); font-size: 15px; line-height: 1.7; margin-bottom: 1.75rem; max-width: 460px; }
-    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn-primary {
-      background: #fff; color: var(--navy-dark);
-      padding: 12px 24px; border-radius: 8px;
-      font-size: 13px; font-weight: 500;
-      border: none; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: inherit;
-      transition: all 0.2s;
-    }
-    .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent; color: #fff;
-      padding: 12px 24px; border-radius: 8px;
-      font-size: 13px;
-      border: 1px solid rgba(255,255,255,0.25);
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.2s;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
-
-    /* HERO VISUAL */
-    .hero-visual {
-      position: relative; z-index: 2;
-      margin-left: auto;
-      max-width: 400px;
-      width: 100%;
-    }
-    .hero-visual svg { width: 100%; height: auto; display: block; }
-
-    /* STATS STRIP */
-    .stats-wrap {
-      background: var(--surface);
-      border-bottom: 0.5px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .stats {
-      padding: 2.5rem 2rem;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .stat {
-      text-align: center;
-      background: #fff;
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem 1rem;
-      transition: all 0.2s;
-    }
-    .stat:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(12,50,96,0.06); }
-    .stat-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      background: var(--blue-pale);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 12px;
-    }
-    .stat-icon svg { width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 1.3; }
-    .stat-num { font-size: 26px; font-weight: 500; color: var(--text-primary); letter-spacing: -0.5px; }
-    .stat-num span { color: var(--blue); }
-    .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; letter-spacing: 0.5px; font-weight: 500; }
-
-    /* SECTION BASE */
-    .section { padding: 4.5rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .section-head { margin-bottom: 2.5rem; }
-    .section-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11px; letter-spacing: 1.8px;
-      color: var(--blue); font-weight: 500;
-      margin-bottom: 0.75rem;
-    }
-    .section-label::before { content: ''; width: 20px; height: 1px; background: var(--blue); }
-    .section-title { font-size: 32px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.5px; line-height: 1.2; }
-    .section-title em { font-style: italic; color: var(--blue); font-family: var(--font-serif); font-weight: 400; }
-    .section-sub { font-size: 15px; color: var(--text-secondary); max-width: 560px; line-height: 1.7; }
-
-    /* SERVICES */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .svc-card {
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem 1.5rem;
-      background: #fff;
-      transition: all 0.2s;
-    }
-    .svc-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(55,138,221,0.2), 0 0 0 1px rgba(55,138,221,0.1); }
-    .svc-icon {
-      width: 44px; height: 44px;
-      border-radius: 10px;
-      background: var(--blue-pale);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-    }
-    .svc-icon svg { width: 22px; height: 22px; stroke: var(--navy); fill: none; stroke-width: 1.3; }
-    .svc-card h3 { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 6px; }
-    .svc-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-
-    /* ABOUT */
-    .about-wrap { background: var(--surface); border-top: 0.5px solid var(--border); position: relative; overflow: hidden; }
-    .about-deco { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); opacity: 0.04; pointer-events: none; }
-    .about-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2.5rem; align-items: start; position: relative; }
-    .doc-portrait {
-      background: var(--navy-dark);
-      border-radius: 14px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .doc-portrait::before {
-      content: ''; position: absolute;
-      width: 200px; height: 200px; border-radius: 50%;
-      background: rgba(55,138,221,0.15);
-      top: -80px; right: -60px;
-    }
-    .doc-portrait-inner { position: relative; z-index: 1; }
-    .doc-avatar-wrap {
-      width: 100px; height: 100px; margin: 0 auto 1rem;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--navy));
-      padding: 3px;
-    }
-    .doc-avatar {
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      background: var(--blue-pale);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 32px; font-weight: 500; color: var(--navy);
-      font-family: var(--font-serif);
-    }
-    .photo-placeholder-note {
-      display: inline-block;
-      font-size: 9px;
-      color: rgba(255,255,255,0.5);
-      margin-top: -6px; margin-bottom: 10px;
-      letter-spacing: 0.5px;
-    }
-    .doc-portrait h3 { font-size: 18px; font-weight: 500; margin-bottom: 3px; letter-spacing: -0.2px; }
-    .doc-portrait .doc-role { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 18px; letter-spacing: 1px; }
-    .doc-badges { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
-    .doc-badge {
-      background: rgba(55,138,221,0.2);
-      color: var(--blue-light);
-      font-size: 10px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      border: 0.5px solid rgba(123,184,240,0.25);
-    }
-    .about-text p { font-size: 14px; color: #4a5763; line-height: 1.85; margin-bottom: 1rem; }
-    .about-text p:first-child { font-size: 17px; color: var(--text-primary); font-family: var(--font-serif); line-height: 1.5; font-style: italic; border-left: 2px solid var(--blue); padding-left: 16px; margin-bottom: 1.5rem; }
-    .credential-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.5rem; }
-    .cred-item { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #4a5763; line-height: 1.4; }
-    .cred-check { width: 18px; height: 18px; border-radius: 50%; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-
-    /* TEAM */
-    .team-section { margin-top: 3.5rem; padding-top: 3rem; border-top: 0.5px solid var(--border); }
-    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
-    .team-card {
-      display: flex; gap: 1.25rem;
-      background: #fff;
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: all 0.2s;
-    }
-    .team-card:hover { border-color: var(--blue); box-shadow: 0 8px 24px rgba(12,50,96,0.06); }
-    .team-avatar-wrap {
-      width: 64px; height: 64px; flex-shrink: 0;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--navy));
-      padding: 2px;
-    }
-    .team-avatar {
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      background: var(--blue-pale);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; font-weight: 500; color: var(--navy);
-      font-family: var(--font-serif);
-    }
-    .team-info h4 { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
-    .team-info .team-role { font-size: 11px; color: var(--blue); letter-spacing: 0.8px; font-weight: 500; margin-bottom: 8px; }
-    .team-info p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-
-    /* INSURANCE */
-    .insurance-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
-    .ins-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .ins-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 0;
-      border-bottom: 0.5px solid var(--border);
-      font-size: 14px;
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-    .ins-item:nth-last-child(-n+2) { border-bottom: none; }
-    .ins-check {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: var(--blue-pale);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .ins-cta {
-      margin-top: 1.25rem;
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--navy-dark);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .ins-cta:hover { background: var(--navy); transform: translateY(-1px); }
-
-    /* TESTIMONIALS */
-    .testimonials-wrap { background: var(--surface); border-top: 0.5px solid var(--border); position: relative; overflow: hidden; }
-    .testimonials-wrap::before {
-      content: '"';
-      position: absolute;
-      font-family: var(--font-serif);
-      font-size: 400px;
-      color: var(--border);
-      top: -140px; left: -20px;
-      line-height: 1;
-      pointer-events: none;
-    }
-    .testi-grid {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 8px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-      position: relative;
-    }
-    .testi-grid::-webkit-scrollbar { height: 6px; }
-    .testi-grid::-webkit-scrollbar-track { background: transparent; }
-    .testi-grid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-    .testi-card {
-      background: #fff;
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem 1.5rem;
-      min-width: 340px;
-      max-width: 340px;
-      flex-shrink: 0;
-      scroll-snap-align: start;
-    }
-    .testi-nav {
-      display: flex; justify-content: center; gap: 8px; margin-top: 1.25rem;
-    }
-    .testi-nav button {
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 0.5px solid var(--border);
-      background: #fff; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; color: var(--text-primary);
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-    .testi-nav button:hover { background: var(--blue-pale); border-color: var(--blue); }
-    .stars { color: #E9A020; font-size: 14px; margin-bottom: 10px; letter-spacing: 2px; }
-    .testi-card blockquote {
-      font-size: 14px;
-      color: #4a5763;
-      line-height: 1.7;
-      margin-bottom: 16px;
-      font-family: var(--font-serif);
-      font-style: italic;
-    }
-    .testi-author { display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 0.5px solid #EAEFF5; }
-    .testi-avatar {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: var(--blue-pale); color: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 500;
-    }
-    .testi-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
-    .testi-loc { font-size: 11px; color: var(--text-muted); }
-
-    /* CONTACT */
-    .contact-wrap { background: var(--navy-dark); position: relative; overflow: hidden; }
-    .contact-wrap::before {
-      content: ''; position: absolute;
-      width: 500px; height: 500px; border-radius: 50%;
-      background: rgba(55,138,221,0.1);
-      bottom: -250px; left: -200px;
-    }
-    .contact-wrap .section-label { color: var(--blue-light); }
-    .contact-wrap .section-label::before { background: var(--blue-light); }
-    .contact-wrap .section-title { color: #fff; }
-    .contact-wrap .section-sub { color: rgba(255,255,255,0.65); }
-    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; position: relative; z-index: 1; }
-    .contact-info {
-      display: flex; flex-direction: column; justify-content: space-between;
-      background: rgba(255,255,255,0.04);
-      border: 0.5px solid rgba(123,184,240,0.15);
-      border-radius: 14px;
-      padding: 1.75rem;
-    }
-    .contact-detail { display: flex; gap: 14px; align-items: flex-start; }
-    .c-icon {
-      width: 42px; height: 42px;
-      border-radius: 10px;
-      background: rgba(55,138,221,0.2);
-      border: 0.5px solid rgba(123,184,240,0.2);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .c-icon svg { width: 16px; height: 16px; stroke: var(--blue-light); fill: none; stroke-width: 1.5; }
-    .contact-detail h4 { font-size: 10px; color: var(--blue-light); margin-bottom: 4px; letter-spacing: 1.5px; font-weight: 500; }
-    .contact-detail p { font-size: 14px; color: rgba(255,255,255,0.9); line-height: 1.55; }
-    .contact-form {
-      background: rgba(255,255,255,0.04);
-      border: 0.5px solid rgba(123,184,240,0.15);
-      border-radius: 14px;
-      padding: 1.75rem;
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .contact-form input, .contact-form select, .contact-form textarea {
-      background: rgba(255,255,255,0.06);
-      border: 0.5px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 11px 14px;
-      font-size: 13px;
-      color: #fff;
-      font-family: inherit;
-      width: 100%;
-      transition: all 0.2s;
-    }
-    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--blue-light);
-      background: rgba(255,255,255,0.1);
-    }
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
-    .contact-form textarea { resize: vertical; min-height: 85px; }
-    .contact-submit {
-      background: var(--blue);
-      color: #fff;
-      border: none;
-      padding: 13px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      margin-top: 4px;
-      transition: all 0.2s;
-    }
-    .contact-submit:hover { background: var(--navy); transform: translateY(-1px); }
-
-    /* FOOTER */
-    .footer {
-      background: var(--navy-darkest);
-      padding: 1.5rem 2rem;
-      border-top: 0.5px solid rgba(123,184,240,0.1);
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .footer p { font-size: 11px; color: rgba(255,255,255,0.4); }
-    .footer .footer-brand { color: var(--blue-light); font-weight: 500; }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
-      .hero-visual { margin: 0 auto; max-width: 340px; }
-      .hero h1 { font-size: 32px; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-inner { grid-template-columns: 1fr; }
-      .insurance-inner { grid-template-columns: 1fr; }
-      .ins-list { grid-template-columns: 1fr 1fr; }
-      .testi-card { min-width: 300px; max-width: 300px; }
-      .contact-inner { grid-template-columns: 1fr; }
-      .credential-grid { grid-template-columns: 1fr; }
-      .team-grid { grid-template-columns: 1fr; }
-      .section { padding: 3rem 1.5rem; }
-      .section-title { font-size: 26px; }
-      .nav-links { display: none; }
-    }
-    @media (max-width: 600px) {
-      .topbar { font-size: 11px; gap: 1rem; padding: 10px 1rem; }
-      .topbar-inner { gap: 0.5rem; }
-      .nav { padding: 0 0.75rem; }
-      .nav-logo { font-size: 13px; gap: 7px; }
-      .logo-mark { width: 24px; height: 24px; }
-      .nav-cta { font-size: 11px; padding: 6px 12px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 28px; }
-      .hero-visual { max-width: 300px; margin: 0 auto; }
-      .hero-sub { font-size: 14px; }
-      .ins-list { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .testi-card { min-width: 280px; max-width: 280px; }
-      .contact-info { gap: 1.25rem; }
-      .contact-detail { padding-bottom: 1rem; border-bottom: 0.5px solid rgba(123,184,240,0.1); }
-      .contact-detail:last-child { padding-bottom: 0; border-bottom: none; }
-      .doc-portrait { padding: 1.5rem 1rem; }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-inner p:last-child { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
 </head>
 <body>
 
@@ -598,7 +31,7 @@
   <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
-    <a href="#" class="nav-logo" style="text-decoration: none;">
+    <a href="#" class="nav-logo">
       <div class="logo-mark">
         <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
           <path d="M8 1.5c-2.2 0-3.8 1.1-3.8 2.8 0 1.1.3 2.2.6 3.8.3 2.2.6 5.4 1.7 5.4.9 0 .9-2.2 1.5-2.2s.6 2.2 1.5 2.2c1.1 0 1.4-3.2 1.7-5.4.3-1.6.6-2.7.6-3.8 0-1.7-1.6-2.8-3.8-2.8z" fill="#fff"/>
@@ -613,22 +46,22 @@
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </div>
-    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Appointment →</button>
+    <button class="nav-cta">Book Appointment →</button>
     </div>
   </nav>
 
   <!-- HERO -->
   <div class="hero-wrap">
-    <svg style="position:absolute;left:5%;bottom:10%;opacity:0.03;pointer-events:none;transform:rotate(-20deg);" width="120" height="120" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#7BB8F0"/></svg>
-    <svg style="position:absolute;right:8%;top:15%;opacity:0.025;pointer-events:none;transform:rotate(15deg);" width="80" height="80" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#7BB8F0"/></svg>
+    <svg class="bg-tooth bg-tooth--hero-1" width="120" height="120" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#7BB8F0"/></svg>
+    <svg class="bg-tooth bg-tooth--hero-2" width="80" height="80" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#7BB8F0"/></svg>
     <section class="hero">
       <div class="hero-content">
         <div class="hero-eyebrow">DENTAL CARE IN THE METRO EAST</div>
         <h1>Expert dentistry,<br>delivered with <em>genuine care.</em></h1>
         <div class="hero-sub">Dr. Joe Jankowski and his team have been caring for families across Fairview Heights, Belleville, Swansea, and O'Fallon since 1997—combining advanced technology with a personal touch.</div>
         <div class="hero-actions">
-          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Appointment <span>→</span></button>
-          <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore Services</button>
+          <button class="btn-primary">Request Appointment <span>→</span></button>
+          <button class="btn-outline">Explore Services</button>
         </div>
       </div>
       <div class="hero-visual">
@@ -667,8 +100,8 @@
 
   <!-- STATS -->
   <div class="stats-wrap">
-    <svg style="position:absolute;right:-20px;top:-10px;opacity:0.04;pointer-events:none;transform:rotate(25deg);" width="100" height="100" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#0C3260"/></svg>
-    <svg style="position:absolute;left:40px;bottom:-15px;opacity:0.03;pointer-events:none;transform:rotate(-12deg);" width="70" height="70" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#0C3260"/></svg>
+    <svg class="bg-tooth bg-tooth--stats-1" width="100" height="100" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#0C3260"/></svg>
+    <svg class="bg-tooth bg-tooth--stats-2" width="70" height="70" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#0C3260"/></svg>
   <div class="stats">
     <div class="stat">
       <div class="stat-icon"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 1v4M13 1v4M3 8h14"/></svg></div>
@@ -787,7 +220,7 @@
       </div>
       <div class="team-section">
         <div class="section-label">MEET THE TEAM</div>
-        <div class="section-title" style="font-size: 26px;">The people behind <em>your smile.</em></div>
+        <div class="section-title section-title--sm">The people behind <em>your smile.</em></div>
         <div class="team-grid">
           <div class="team-card">
             <div class="team-avatar-wrap">
@@ -839,8 +272,8 @@
     <div class="insurance-inner">
       <div>
         <div class="section-label">INSURANCE & FINANCING</div>
-        <div class="section-title" style="font-size: 26px;">In-network with <em>most major plans.</em></div>
-        <div class="section-sub" style="margin-top: 0.75rem;">We accept most insurance programs and offer affordable financing options.</div>
+        <div class="section-title section-title--sm">In-network with <em>most major plans.</em></div>
+        <div class="section-sub section-sub--spaced">We accept most insurance programs and offer affordable financing options.</div>
       </div>
       <div>
         <div class="ins-list">
@@ -860,8 +293,8 @@
 
   <!-- TESTIMONIALS -->
   <div class="testimonials-wrap" id="reviews">
-    <svg style="position:absolute;right:60px;bottom:20px;opacity:0.04;pointer-events:none;transform:rotate(30deg);" width="110" height="110" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#0C3260"/></svg>
-    <svg style="position:absolute;left:-10px;top:30px;opacity:0.03;pointer-events:none;transform:rotate(-8deg);" width="80" height="80" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#0C3260"/></svg>
+    <svg class="bg-tooth bg-tooth--testi-1" width="110" height="110" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#0C3260"/></svg>
+    <svg class="bg-tooth bg-tooth--testi-2" width="80" height="80" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#0C3260"/></svg>
     <section class="section">
       <div class="section-head">
         <div class="section-label">WHAT PATIENTS SAY</div>
@@ -947,16 +380,16 @@
         </div>
       </div>
       <div class="testi-nav">
-        <button onclick="document.querySelector('.testi-grid').scrollBy({left:-354,behavior:'smooth'})" aria-label="Previous">←</button>
-        <button onclick="document.querySelector('.testi-grid').scrollBy({left:354,behavior:'smooth'})" aria-label="Next">→</button>
+        <button class="testi-nav-prev" aria-label="Previous">←</button>
+        <button class="testi-nav-next" aria-label="Next">→</button>
       </div>
     </section>
   </div>
 
   <!-- CONTACT -->
   <div class="contact-wrap" id="contact">
-    <svg style="position:absolute;right:5%;top:40px;opacity:0.035;pointer-events:none;transform:rotate(-18deg);" width="140" height="140" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#7BB8F0"/></svg>
-    <svg style="position:absolute;left:10%;bottom:30px;opacity:0.03;pointer-events:none;transform:rotate(22deg);" width="90" height="90" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#7BB8F0"/></svg>
+    <svg class="bg-tooth bg-tooth--contact-1" width="140" height="140" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#7BB8F0"/></svg>
+    <svg class="bg-tooth bg-tooth--contact-2" width="90" height="90" viewBox="0 0 100 100"><path d="M50 12 C35 12,28 22,28 32 C28 40,30 48,31 55 C33 68,35 85,42 85 C46 85,46 76,50 76 C54 76,54 85,58 85 C65 85,67 68,69 55 C70 48,72 40,72 32 C72 22,65 12,50 12Z" fill="#7BB8F0"/></svg>
     <section class="section">
       <div class="section-head">
         <div class="section-label">GET IN TOUCH</div>
@@ -967,7 +400,7 @@
         <div class="contact-info">
           <div class="contact-detail">
             <div class="c-icon"><svg viewBox="0 0 14 14"><path d="M3 2h2.5l1 3-1.5 1a8 8 0 003 3l1-1.5 3 1V11a1 1 0 01-1 1C5.5 12 2 8.5 2 4a1 1 0 011-2z"/></svg></div>
-            <div><h4>PHONE</h4><p>(618) 222-1942<br><span style="font-size:12px;color:rgba(255,255,255,0.5);">Fax: (618) 222-2819</span></p></div>
+            <div><h4>PHONE</h4><p>(618) 222-1942<br><span class="contact-fax">Fax: (618) 222-2819</span></p></div>
           </div>
           <div class="contact-detail">
             <div class="c-icon"><svg viewBox="0 0 14 14"><path d="M2 3h10v8H2z"/><path d="M2 3l5 5 5-5"/></svg></div>
@@ -982,7 +415,7 @@
             <div><h4>HOURS</h4><p>Mon – Fri: 8:00 AM – 5:00 PM<br>Sat: By appointment</p></div>
           </div>
         </div>
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submission is a demo—wire this up to your backend or a service like Formspree.');">
+        <form class="contact-form">
           <div class="form-row">
             <input type="text" placeholder="First name" required />
             <input type="text" placeholder="Last name" required />
@@ -1008,7 +441,7 @@
   <footer class="footer">
     <div class="footer-inner">
     <p><span class="footer-brand">Lakeland Hills Dental</span> · © 2026 Walter J. Jankowski, DMD. All rights reserved.</p>
-    <p>5011 N. Illinois St., Suite 1, Fairview Heights, IL 62208 · <a href="tel:+16182221942" style="color:rgba(255,255,255,0.6);text-decoration:none;">(618) 222-1942</a></p>
+    <p>5011 N. Illinois St., Suite 1, Fairview Heights, IL 62208 · <a href="tel:+16182221942" class="footer-link">(618) 222-1942</a></p>
     </div>
   </footer>
 
