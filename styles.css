@@ -503,6 +503,7 @@ body {
   background: rgba(255,255,255,0.1);
 }
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+.contact-form select option { background: var(--navy-dark); color: #fff; }
 .contact-form textarea { resize: vertical; min-height: 85px; }
 .contact-submit {
   background: var(--blue);
