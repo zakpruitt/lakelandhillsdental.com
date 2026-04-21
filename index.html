@@ -42,13 +42,17 @@
     .topbar {
       background: var(--navy-darkest);
       padding: 10px 2rem;
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+    }
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
-      font-size: 12px;
-      color: rgba(255,255,255,0.85);
     }
     .topbar-item { display: flex; align-items: center; gap: 7px; }
     .topbar-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: 0.7; }
@@ -59,22 +63,26 @@
     .nav {
       background: var(--navy-dark);
       padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 62px;
       position: sticky;
       top: 0;
       z-index: 100;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 15px; font-weight: 500; letter-spacing: 0.3px; }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 15px; font-weight: 500; letter-spacing: 0.3px; white-space: nowrap; }
     .logo-mark {
       width: 28px; height: 28px;
       background: var(--blue);
       border-radius: 7px;
       display: flex; align-items: center; justify-content: center;
     }
-    .nav-logo .divide { color: rgba(255,255,255,0.3); font-weight: 300; margin: 0 2px; }
     .nav-logo span { color: var(--blue-light); }
     .nav-links { display: flex; gap: 1.75rem; }
     .nav-links a { color: rgba(255,255,255,0.75); font-size: 12px; text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
@@ -96,12 +104,10 @@
 
     /* HERO */
     .hero {
-      background: var(--navy-dark);
       padding: 4.5rem 2rem 4rem;
       position: relative;
-      overflow: hidden;
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 3rem;
       align-items: center;
       max-width: 1200px;
@@ -171,25 +177,42 @@
     /* HERO VISUAL */
     .hero-visual {
       position: relative; z-index: 2;
-      aspect-ratio: 1;
-      max-width: 360px;
       margin-left: auto;
+      max-width: 400px;
+      width: 100%;
     }
-    .hero-visual svg { width: 100%; height: 100%; }
+    .hero-visual svg { width: 100%; height: auto; display: block; }
 
     /* STATS STRIP */
-    .stats {
+    .stats-wrap {
       background: var(--surface);
       border-bottom: 0.5px solid var(--border);
-      padding: 1.75rem 2rem;
+    }
+    .stats {
+      padding: 2.5rem 2rem;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       max-width: 1200px;
       margin: 0 auto;
     }
-    .stat { text-align: center; border-right: 0.5px solid var(--border); }
-    .stat:last-child { border-right: none; }
+    .stat {
+      text-align: center;
+      background: #fff;
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      transition: all 0.2s;
+    }
+    .stat:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(12,50,96,0.06); }
+    .stat-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .stat-icon svg { width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 1.3; }
     .stat-num { font-size: 26px; font-weight: 500; color: var(--text-primary); letter-spacing: -0.5px; }
     .stat-num span { color: var(--blue); }
     .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; letter-spacing: 0.5px; font-weight: 500; }
@@ -217,12 +240,7 @@
       background: #fff;
       transition: all 0.2s;
     }
-    .svc-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(12,50,96,0.08); }
-    .svc-card.featured { background: var(--navy-dark); border-color: var(--navy-dark); }
-    .svc-card.featured h3 { color: #fff; }
-    .svc-card.featured p { color: rgba(255,255,255,0.65); }
-    .svc-card.featured .svc-icon { background: rgba(123,184,240,0.2); }
-    .svc-card.featured .svc-icon svg { stroke: var(--blue-light); }
+    .svc-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(55,138,221,0.2), 0 0 0 1px rgba(55,138,221,0.1); }
     .svc-icon {
       width: 44px; height: 44px;
       border-radius: 10px;
@@ -292,23 +310,71 @@
     .cred-item { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #4a5763; line-height: 1.4; }
     .cred-check { width: 18px; height: 18px; border-radius: 50%; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 
-    /* INSURANCE */
-    .insurance-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
-    .ins-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .ins-pill {
-      background: var(--surface);
+    /* TEAM */
+    .team-section { margin-top: 3.5rem; padding-top: 3rem; border-top: 0.5px solid var(--border); }
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+    .team-card {
+      display: flex; gap: 1.25rem;
+      background: #fff;
       border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+    .team-card:hover { border-color: var(--blue); box-shadow: 0 8px 24px rgba(12,50,96,0.06); }
+    .team-avatar-wrap {
+      width: 64px; height: 64px; flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      padding: 2px;
+    }
+    .team-avatar {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 500; color: var(--navy);
+      font-family: var(--font-serif);
+    }
+    .team-info h4 { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
+    .team-info .team-role { font-size: 11px; color: var(--blue); letter-spacing: 0.8px; font-weight: 500; margin-bottom: 8px; }
+    .team-info p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* INSURANCE */
+    .insurance-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
+    .ins-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .ins-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 0;
+      border-bottom: 0.5px solid var(--border);
+      font-size: 14px;
       color: var(--text-primary);
-      font-size: 13px;
-      padding: 8px 16px;
-      border-radius: 20px;
       font-weight: 500;
     }
-    .ins-pill.highlight {
+    .ins-item:nth-last-child(-n+2) { border-bottom: none; }
+    .ins-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .ins-cta {
+      margin-top: 1.25rem;
+      display: inline-flex; align-items: center; gap: 8px;
       background: var(--navy-dark);
       color: #fff;
-      border-color: var(--navy-dark);
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
     }
+    .ins-cta:hover { background: var(--navy); transform: translateY(-1px); }
 
     /* TESTIMONIALS */
     .testimonials-wrap { background: var(--surface); border-top: 0.5px solid var(--border); position: relative; overflow: hidden; }
@@ -322,13 +388,43 @@
       line-height: 1;
       pointer-events: none;
     }
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; position: relative; }
+    .testi-grid {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+      position: relative;
+    }
+    .testi-grid::-webkit-scrollbar { height: 6px; }
+    .testi-grid::-webkit-scrollbar-track { background: transparent; }
+    .testi-grid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
     .testi-card {
       background: #fff;
       border: 0.5px solid var(--border);
       border-radius: 12px;
       padding: 1.75rem 1.5rem;
+      min-width: 340px;
+      max-width: 340px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
     }
+    .testi-nav {
+      display: flex; justify-content: center; gap: 8px; margin-top: 1.25rem;
+    }
+    .testi-nav button {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 0.5px solid var(--border);
+      background: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: var(--text-primary);
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .testi-nav button:hover { background: var(--blue-pale); border-color: var(--blue); }
     .stars { color: #E9A020; font-size: 14px; margin-bottom: 10px; letter-spacing: 2px; }
     .testi-card blockquote {
       font-size: 14px;
@@ -361,7 +457,13 @@
     .contact-wrap .section-title { color: #fff; }
     .contact-wrap .section-sub { color: rgba(255,255,255,0.65); }
     .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; position: relative; z-index: 1; }
-    .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-info {
+      display: flex; flex-direction: column; justify-content: space-between;
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(123,184,240,0.15);
+      border-radius: 14px;
+      padding: 1.75rem;
+    }
     .contact-detail { display: flex; gap: 14px; align-items: flex-start; }
     .c-icon {
       width: 42px; height: 42px;
@@ -419,12 +521,16 @@
     .footer {
       background: var(--navy-darkest);
       padding: 1.5rem 2rem;
+      border-top: 0.5px solid rgba(123,184,240,0.1);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 8px;
-      border-top: 0.5px solid rgba(123,184,240,0.1);
     }
     .footer p { font-size: 11px; color: rgba(255,255,255,0.4); }
     .footer .footer-brand { color: var(--blue-light); font-weight: 500; }
@@ -432,28 +538,42 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
-      .hero-visual { margin: 0 auto; max-width: 280px; }
+      .hero-visual { margin: 0 auto; max-width: 340px; }
       .hero h1 { font-size: 32px; }
       .stats { grid-template-columns: repeat(2, 1fr); }
-      .stat:nth-child(2) { border-right: none; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .about-inner { grid-template-columns: 1fr; }
       .insurance-inner { grid-template-columns: 1fr; }
-      .testi-grid { grid-template-columns: 1fr; }
+      .ins-list { grid-template-columns: 1fr 1fr; }
+      .testi-card { min-width: 300px; max-width: 300px; }
       .contact-inner { grid-template-columns: 1fr; }
       .credential-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
       .section { padding: 3rem 1.5rem; }
       .section-title { font-size: 26px; }
       .nav-links { display: none; }
     }
     @media (max-width: 600px) {
       .topbar { font-size: 11px; gap: 1rem; padding: 10px 1rem; }
-      .nav { padding: 0 1rem; }
+      .topbar-inner { gap: 0.5rem; }
+      .nav { padding: 0 0.75rem; }
+      .nav-logo { font-size: 13px; gap: 7px; }
+      .logo-mark { width: 24px; height: 24px; }
+      .nav-cta { font-size: 11px; padding: 6px 12px; }
       .services-grid { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
-      .stat { border-right: none; border-bottom: 0.5px solid var(--border); padding-bottom: 1rem; }
-      .stat:last-child { border-bottom: none; padding-bottom: 0; }
       .hero h1 { font-size: 28px; }
+      .hero-visual { max-width: 300px; margin: 0 auto; }
+      .hero-sub { font-size: 14px; }
+      .ins-list { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .testi-card { min-width: 280px; max-width: 280px; }
+      .contact-info { gap: 1.25rem; }
+      .contact-detail { padding-bottom: 1rem; border-bottom: 0.5px solid rgba(123,184,240,0.1); }
+      .contact-detail:last-child { padding-bottom: 0; border-bottom: none; }
+      .doc-portrait { padding: 1.5rem 1rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-inner p:last-child { display: none; }
     }
   </style>
 </head>
@@ -461,6 +581,7 @@
 
   <!-- TOP CONTACT BAR -->
   <div class="topbar">
+    <div class="topbar-inner">
     <div class="topbar-item">
       <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h2.5l1 3-1.5 1a8 8 0 003 3l1-1.5 3 1V11a1 1 0 01-1 1C5.5 12 2 8.5 2 4a1 1 0 011-2z"/></svg>
       Call us: <a href="tel:+16182221942" class="topbar-phone">(618) 222-1942</a>
@@ -469,17 +590,19 @@
       <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="7" cy="5" r="1.5"/></svg>
       5011 N. Illinois Street, Suite 1, Fairview Heights, IL 62208
     </div>
+    </div>
   </div>
 
   <!-- NAV -->
   <nav class="nav">
+    <div class="nav-inner">
     <a href="#" class="nav-logo" style="text-decoration: none;">
       <div class="logo-mark">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M8 2c-2 0-3.5 1-3.5 2.5 0 1 .3 2 .5 3.5.3 2 .5 5 1.5 5 .8 0 .8-2 1.5-2s.7 2 1.5 2c1 0 1.2-3 1.5-5 .2-1.5.5-2.5.5-3.5C11.5 3 10 2 8 2z" fill="#fff"/>
         </svg>
       </div>
-      Lakeland Hills <span class="divide">|</span> <span>Dental</span>
+      Lakeland Hills <span>Dental</span>
     </a>
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -489,6 +612,7 @@
       <a href="#contact">Contact</a>
     </div>
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Appointment →</button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -504,57 +628,63 @@
         </div>
       </div>
       <div class="hero-visual">
-        <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="180" cy="180" r="150" fill="none" stroke="rgba(123,184,240,0.15)" stroke-width="0.8" stroke-dasharray="2 4"/>
-          <circle cx="180" cy="180" r="110" fill="rgba(55,138,221,0.08)"/>
-          <g transform="translate(180 180)">
+        <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="210" cy="210" r="185" fill="none" stroke="rgba(123,184,240,0.15)" stroke-width="0.8" stroke-dasharray="2 4"/>
+          <circle cx="210" cy="210" r="140" fill="rgba(55,138,221,0.08)"/>
+          <g transform="translate(210 210) scale(1.35)">
             <path d="M0 -80 C -35 -80, -55 -60, -55 -30 C -55 -10, -50 10, -48 30 C -45 55, -40 75, -25 75 C -15 75, -12 60, -8 50 C -5 42, -3 38, 0 38 C 3 38, 5 42, 8 50 C 12 60, 15 75, 25 75 C 40 75, 45 55, 48 30 C 50 10, 55 -10, 55 -30 C 55 -60, 35 -80, 0 -80 Z" fill="#fff" opacity="0.95"/>
             <path d="M -30 -55 C -35 -40, -32 -20, -25 -15" fill="none" stroke="#E6F1FB" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
             <path d="M 30 -65 C 45 -50, 48 -20, 45 10 C 42 35, 38 55, 30 65" fill="none" stroke="rgba(12,50,96,0.1)" stroke-width="2"/>
           </g>
-          <g transform="translate(70 80)">
-            <rect x="0" y="0" width="80" height="26" rx="13" fill="#378ADD" opacity="0.95"/>
-            <text x="40" y="17" text-anchor="middle" fill="#fff" style="font-size: 10px; font-family: 'Inter', sans-serif; font-weight: 500;">Implants</text>
+          <g transform="translate(40 60)">
+            <rect x="0" y="0" width="90" height="30" rx="15" fill="#378ADD" opacity="0.95"/>
+            <text x="45" y="20" text-anchor="middle" fill="#fff" style="font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 500;">Implants</text>
           </g>
-          <g transform="translate(260 100)">
-            <rect x="0" y="0" width="70" height="26" rx="13" fill="#fff"/>
-            <text x="35" y="17" text-anchor="middle" fill="#0C3260" style="font-size: 10px; font-family: 'Inter', sans-serif; font-weight: 500;">Crowns</text>
+          <g transform="translate(310 80)">
+            <rect x="0" y="0" width="80" height="30" rx="15" fill="#fff"/>
+            <text x="40" y="20" text-anchor="middle" fill="#0C3260" style="font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 500;">Crowns</text>
           </g>
-          <g transform="translate(40 240)">
-            <rect x="0" y="0" width="90" height="26" rx="13" fill="#fff"/>
-            <text x="45" y="17" text-anchor="middle" fill="#0C3260" style="font-size: 10px; font-family: 'Inter', sans-serif; font-weight: 500;">Aligners</text>
+          <g transform="translate(20 300)">
+            <rect x="0" y="0" width="100" height="30" rx="15" fill="#fff"/>
+            <text x="50" y="20" text-anchor="middle" fill="#0C3260" style="font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 500;">Aligners</text>
           </g>
-          <g transform="translate(250 260)">
-            <rect x="0" y="0" width="85" height="26" rx="13" fill="#378ADD" opacity="0.95"/>
-            <text x="42" y="17" text-anchor="middle" fill="#fff" style="font-size: 10px; font-family: 'Inter', sans-serif; font-weight: 500;">Whitening</text>
+          <g transform="translate(300 320)">
+            <rect x="0" y="0" width="100" height="30" rx="15" fill="#378ADD" opacity="0.95"/>
+            <text x="50" y="20" text-anchor="middle" fill="#fff" style="font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 500;">Whitening</text>
           </g>
-          <circle cx="90" cy="180" r="3" fill="#7BB8F0" opacity="0.6"/>
-          <circle cx="290" cy="180" r="2" fill="#7BB8F0" opacity="0.4"/>
-          <circle cx="180" cy="60" r="2" fill="#7BB8F0" opacity="0.5"/>
-          <circle cx="180" cy="310" r="3" fill="#7BB8F0" opacity="0.6"/>
+          <circle cx="70" cy="210" r="3" fill="#7BB8F0" opacity="0.6"/>
+          <circle cx="360" cy="210" r="3" fill="#7BB8F0" opacity="0.4"/>
+          <circle cx="210" cy="40" r="3" fill="#7BB8F0" opacity="0.5"/>
+          <circle cx="210" cy="385" r="3" fill="#7BB8F0" opacity="0.6"/>
         </svg>
       </div>
     </section>
   </div>
 
   <!-- STATS -->
+  <div class="stats-wrap">
   <div class="stats">
     <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 1v4M13 1v4M3 8h14"/></svg></div>
       <div class="stat-num">27<span>+</span></div>
       <div class="stat-label">YEARS SERVING METRO EAST</div>
     </div>
     <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 20 20"><path d="M10 2l2 4 4 .5-3 3 .7 4L10 11.5 6.3 13.5l.7-4-3-3L8 6z"/></svg></div>
       <div class="stat-num">9<span>+</span></div>
       <div class="stat-label">INSURANCE PLANS ACCEPTED</div>
     </div>
     <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 20 20"><path d="M10 2C7.8 2 6 3.8 6 6c0 4 4 10 4 10s4-6 4-10c0-2.2-1.8-4-4-4z"/><circle cx="10" cy="6" r="1.5"/></svg></div>
       <div class="stat-num">4</div>
       <div class="stat-label">COMMUNITIES SERVED</div>
     </div>
     <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 20 20"><circle cx="10" cy="7" r="5"/><path d="M7 12l-1 6 4-2 4 2-1-6"/></svg></div>
       <div class="stat-num">ICOI</div>
       <div class="stat-label">IMPLANT FELLOWSHIP</div>
     </div>
+  </div>
   </div>
 
   <!-- SERVICES -->
@@ -565,7 +695,7 @@
       <div class="section-sub">From routine cleanings to advanced implant surgery, every treatment you need is available right here in Fairview Heights.</div>
     </div>
     <div class="services-grid">
-      <div class="svc-card featured">
+      <div class="svc-card">
         <div class="svc-icon">
           <svg viewBox="0 0 20 20"><path d="M10 2c-2.5 0-4 1.3-4 3.2 0 1.3.4 2.6.7 4.4.3 2.5.6 6.2 1.9 6.2 1 0 1-2.5 1.9-2.5.8 0 .8 2.5 1.9 2.5 1.3 0 1.6-3.7 1.9-6.2.3-1.8.7-3.1.7-4.4 0-1.9-1.5-3.2-4-3.2z"/></svg>
         </div>
@@ -649,6 +779,52 @@
           </div>
         </div>
       </div>
+      <div class="team-section">
+        <div class="section-label">MEET THE TEAM</div>
+        <div class="section-title" style="font-size: 26px;">The people behind <em>your smile.</em></div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar-wrap">
+              <div class="team-avatar">T</div>
+            </div>
+            <div class="team-info">
+              <h4>Toni</h4>
+              <div class="team-role">OFFICE MANAGER</div>
+              <p>With over 15 years of experience in the dental field, Toni provides exceptional service and guides patients through the treatment process for a successful visit.</p>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar-wrap">
+              <div class="team-avatar">B</div>
+            </div>
+            <div class="team-info">
+              <h4>Brooke</h4>
+              <div class="team-role">GENERAL ASSISTANT / MVP</div>
+              <p>A graduate of Lewis and Clark's Dental Assisting Program, Brooke is a great multi-tasker who works hard to keep things running smoothly at the office.</p>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar-wrap">
+              <div class="team-avatar">C</div>
+            </div>
+            <div class="team-info">
+              <h4>Corinna</h4>
+              <div class="team-role">DENTAL HYGIENIST</div>
+              <p>Hailing from Breese, Illinois, Corinna brings a gentle, caring approach and is committed to educating patients about good oral hygiene and preventive care.</p>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar-wrap">
+              <div class="team-avatar">S</div>
+            </div>
+            <div class="team-info">
+              <h4>Susan</h4>
+              <div class="team-role">DENTAL ASSISTANT & FRONT DESK</div>
+              <p>Originally from Texas, Susan brings over 25 years of experience. She assists with procedures and supports scheduling at the front desk with a friendly, welcoming demeanor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -658,18 +834,20 @@
       <div>
         <div class="section-label">INSURANCE & FINANCING</div>
         <div class="section-title" style="font-size: 26px;">In-network with <em>most major plans.</em></div>
-        <div class="section-sub" style="margin-top: 0.75rem;">No insurance? Apply for CareCredit for affordable financing with little or no interest.</div>
+        <div class="section-sub" style="margin-top: 0.75rem;">We accept most insurance programs and offer affordable financing options.</div>
       </div>
-      <div class="ins-grid">
-        <span class="ins-pill">Delta Dental Premier</span>
-        <span class="ins-pill">UHC & UHC Medicare Advantage</span>
-        <span class="ins-pill">Aetna</span>
-        <span class="ins-pill">Cigna</span>
-        <span class="ins-pill">MetLife</span>
-        <span class="ins-pill">Ameritas</span>
-        <span class="ins-pill">Principal</span>
-        <span class="ins-pill">United Concordia</span>
-        <span class="ins-pill highlight">+ CareCredit Financing</span>
+      <div>
+        <div class="ins-list">
+          <div class="ins-item"><div class="ins-check"><svg width="9" height="9" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Delta Dental Premier</div>
+          <div class="ins-item"><div class="ins-check"><svg width="9" height="9" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>UHC & UHC Medicare Advantage</div>
+          <div class="ins-item"><div class="ins-check"><svg width="9" height="9" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Aetna</div>
+          <div class="ins-item"><div class="ins-check"><svg width="9" height="9" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Cigna</div>
+          <div class="ins-item"><div class="ins-check"><svg width="9" height="9" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>MetLife</div>
+          <div class="ins-item"><div class="ins-check"><svg width="9" height="9" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Ameritas</div>
+          <div class="ins-item"><div class="ins-check"><svg width="9" height="9" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Principal</div>
+          <div class="ins-item"><div class="ins-check"><svg width="9" height="9" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>United Concordia</div>
+        </div>
+        <a href="#contact" class="ins-cta">No insurance? Apply for CareCredit →</a>
       </div>
     </div>
   </section>
@@ -715,6 +893,54 @@
             </div>
           </div>
         </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>The laser gum treatment was so much easier than I expected. Minimal discomfort and I healed incredibly fast. Highly recommend.</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">DP</div>
+            <div>
+              <div class="testi-name">D. Patel</div>
+              <div class="testi-loc">Fairview Heights</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>I've recommended Dr. Jankowski to everyone I know. His cosmetic work is incredible — my veneers look absolutely perfect.</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">LC</div>
+            <div>
+              <div class="testi-name">L. Chen</div>
+              <div class="testi-loc">Swansea</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>We bring our three kids here and every visit is stress-free. The staff is so patient and great with children. Wouldn't go anywhere else.</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">JW</div>
+            <div>
+              <div class="testi-name">J. Williams</div>
+              <div class="testi-loc">Belleville</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>After losing a tooth in an accident, Dr. Joe gave me my confidence back with an implant that looks completely real. Forever grateful.</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">AT</div>
+            <div>
+              <div class="testi-name">A. Thompson</div>
+              <div class="testi-loc">O'Fallon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-nav">
+        <button onclick="document.querySelector('.testi-grid').scrollBy({left:-354,behavior:'smooth'})" aria-label="Previous">←</button>
+        <button onclick="document.querySelector('.testi-grid').scrollBy({left:354,behavior:'smooth'})" aria-label="Next">→</button>
       </div>
     </section>
   </div>
@@ -751,8 +977,10 @@
             <input type="text" placeholder="First name" required />
             <input type="text" placeholder="Last name" required />
           </div>
-          <input type="email" placeholder="Email address" required />
-          <input type="tel" placeholder="Phone number" required />
+          <div class="form-row">
+            <input type="email" placeholder="Email address" required />
+            <input type="tel" placeholder="Phone number" required />
+          </div>
           <select required>
             <option value="">Current patient?</option>
             <option>Yes, I'm a current patient</option>
@@ -768,8 +996,10 @@
 
   <!-- FOOTER -->
   <footer class="footer">
+    <div class="footer-inner">
     <p><span class="footer-brand">Lakeland Hills Dental</span> · © 2026 Walter J. Jankowski, DMD. All rights reserved.</p>
     <p>5011 N. Illinois St., Suite 1, Fairview Heights, IL 62208 · <a href="tel:+16182221942" style="color:rgba(255,255,255,0.6);text-decoration:none;">(618) 222-1942</a></p>
+    </div>
   </footer>
 
 </body>
