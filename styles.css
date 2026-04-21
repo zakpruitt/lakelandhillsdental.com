@@ -488,7 +488,7 @@ body {
 }
 .c-icon svg { width: 16px; height: 16px; stroke: var(--blue-light); fill: none; stroke-width: 1.5; }
 .contact-detail h4 { font-size: 10px; color: var(--blue-light); margin-bottom: 4px; letter-spacing: 1.5px; font-weight: 500; }
-.contact-detail p, .contact-detail p a { font-size: 14px; color: var(--blue-light); line-height: 1.55; text-decoration: none; }
+.contact-detail p, .contact-detail p a { font-size: 14px; color: rgba(255,255,255,0.9); line-height: 1.55; text-decoration: none; }
 .contact-fax { font-size: 12px; color: rgba(255,255,255,0.5); }
 .contact-form {
   background: rgba(255,255,255,0.04);
